@@ -125,8 +125,8 @@ func main() {
 	}
 
 	// ************************************ Config for implement DB ************************************
-	pq := cfg.Postgresql(os.Getenv("GORM_CONNECTION"), 20, 20)
-	pqdbAuth := cfg.Postgresql(os.Getenv("POSTGRES_AUTH_CONNECTION"), 20, 20)
+	pq := cfg.Postgresql(os.Getenv("GORM_CONNECTION"), 20, 80)
+	pqdbAuth := cfg.Postgresql(os.Getenv("POSTGRES_AUTH_CONNECTION"), 20, 80)
 	// *************************************************************************************************
 
 	auth := middleware.Init(routesGin, logger, pqdbAuth, vldt, response)

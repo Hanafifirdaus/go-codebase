@@ -4,16 +4,11 @@ import (
 	"encoding/json"
 	"fmt"
 	"math/rand"
-	"net/http"
 	"net/smtp"
 	"time"
 
 	"github.com/widyan/go-codebase/model"
-
-	"go.elastic.co/apm/module/apmhttp"
 )
-
-var tracingClient = apmhttp.WrapClient(http.DefaultClient)
 
 // RandomWords is
 func RandomWords(sumRandom int) string {
@@ -83,6 +78,12 @@ func UniqueInt(intSlice []int) []int {
 		}
 	}
 	return list
+}
+
+func PanicIfError(err error) {
+	if err != nil {
+		panic(err)
+	}
 }
 
 // func SendEmailUsingSMTP() (err error) {

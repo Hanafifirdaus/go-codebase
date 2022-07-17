@@ -17,9 +17,10 @@ func (c *ConfigImpl) Mysql(dsn, namedb string, SetMaxIdleConns, SetMaxOpenConns 
 		c.Logger.Panic(err)
 	}
 
-	sqlDB.SetConnMaxLifetime(time.Minute * 3)
 	sqlDB.SetMaxIdleConns(SetMaxIdleConns)
 	sqlDB.SetMaxOpenConns(SetMaxOpenConns)
+	sqlDB.SetConnMaxIdleTime(5 * time.Minute)
+	sqlDB.SetConnMaxLifetime(60 * time.Minute)
 
 	return sqlDB
 }
